@@ -1,0 +1,43 @@
+apiVersion: sloth.slok.dev/v1
+kind: PrometheusServiceLevel
+metadata:
+  name: xxxx-service-slo                                             ### rename any app name you want to create SLO metrics
+  annotations:
+    meta.helm.sh/release-name: promethues
+    meta.helm.sh/release-namespace: default
+  generation: 1
+  labels:
+    prometheus: prometheus
+    role: alert-rules
+    app: sloth
+    app.kubernetes.io/instance: promethues
+    app: xxxx-service-slo                                            ### rename any app name you want to create SLO metrics
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 52.1.0
+    chart: kube-prometheus-stack-52.1.0
+    heritage: Helm
+    release: promethues
+  namespace: default
+spec:
+  service: "xxxx-services-slo"                                        ### rename any app name you want to create SLO metrics
+  labels:
+    cluster: "production"
+    component: "xxxx"
+    context: "team-xxxx"
+  slos:
+    - name: "xxxx-backend-slo"                                         ### rename any app name you want to create SLO metrics
+      objective: 99.9
+      description: "SLO based on availability for HTTP request responses."                        ### rename any app name you want to create SLO metrics
+      sli:
+        events:
+          errorQuery: sum(rate(http_request_duration_seconds_count{job="myservice",code=~"(5..|401)"}[{{.window}}]))             ### write error query
+          totalQuery: sum(rate(http_request_duration_seconds_count{job="myservice"}[{{.window}}]))                               ### write total query 
+      alerting:
+        name: xxxxServiceHighErrorRate                                  ### please rename alert rule name to releated SLO service name 
+        pageAlert:
+          labels:
+            severity: team-xxxx
+        ticketAlert:
+          labels:
+            severity: warning
