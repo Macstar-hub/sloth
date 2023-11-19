@@ -1,19 +1,19 @@
 # Table of Contents
 1. Introduction
 2. Template
-  - Metadata
-  - Spec Section
-  - SLO Section
-  - Formats
-    - Perfomance Fortmat
-      - Exampel
-    - Avability Format
+   - Metadata
+   - Spec Section
+   - SLO Section
+   - Formats
+     - Perfomance Fortmat
+       - Exampel
+     - Avability Format
       - Example
-  - Alerting Section
+   - Alerting Section
 3. Examples
 4. Compiling 
-  - Manifest generate example
-  - Manifest validate
+   - Manifest generate example
+   - Manifest validate
 
 
 # Introduction
