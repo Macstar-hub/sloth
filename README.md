@@ -21,7 +21,7 @@
 
 # Template
 **Note:**
-> :warning: the following has been designated as a template, and additional details will be determined in future sessions.
+> :warning: It should be noted that the mentioned items are merely presented as a template, and final changes may vary based on the specific requirements of each company.
 * The CRD have four sections as follows:
 
 ## Metadata
